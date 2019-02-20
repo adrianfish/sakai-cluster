@@ -1,0 +1,7 @@
+src/sakai/lib
+src/sakai/components
+src/sakai/webapps
+src/sakai/endorsed
+src/sakai/sakai/elasticsearch
+src/sakai/sakai/default.sakai.properties
+src/sakai/sakai/samigo

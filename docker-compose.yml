@@ -1,0 +1,25 @@
+version: '3'
+services:
+  haproxy:
+    image: haproxy
+    ports:
+     - "82:82"
+    volumes:
+     - ./src/haproxy:/usr/local/etc/haproxy
+  tomcat1:
+    image: tomcat:9.0.10-jre8-slim
+    volumes:
+     - ./src/sakai/lib:/usr/local/tomcat/lib
+     - ./src/sakai/components:/usr/local/tomcat/components
+     - ./src/sakai/webapps:/usr/local/tomcat/webapps
+     - ./src/sakai/endorsed:/usr/local/tomcat/endorsed
+     - ./src/sakai/sakai:/usr/local/tomcat/sakai
+  database:
+    image: mysql:5.7.23
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: "sakai"
+      MYSQL_USER: "sakaiuser"
+      MYSQL_PASSWORD: "c00k1t"
+    
